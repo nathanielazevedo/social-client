@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
+// import IbanbanApi from "api";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -54,6 +55,7 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
+  // const API = new IbanbanApi()
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
@@ -64,7 +66,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "http://localhost:3001/auth/register",
+      "https://social-server-production-bda9.up.railway.app/auth/register",
       {
         method: "POST",
         body: formData,
@@ -79,7 +81,8 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+    console.log('trying')
+    const loggedInResponse = await fetch("https://social-server-production-bda9.up.railway.app/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),

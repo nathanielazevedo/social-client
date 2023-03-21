@@ -11,7 +11,7 @@ const userImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`http://localhost:3001/assets/${image}`}
+        src={`https://social-server-production-bda9.up.railway.app/assets/${image}`}
       />
     </Box>
   );
